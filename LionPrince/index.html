@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | LionPrince</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: #231F20;
+        }
+
+        #unity-canvas {
+            display: block;
+            width: 100vw; /* 화면 너비에 맞춤 */
+            height: 100vh; /* 화면 높이에 맞춤 */
+            background: #231F20;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="unity-canvas" width="3840" height="2160" tabindex="-1"></canvas>
+
+    <script src="Build/LionPrince.loader.js"></script>
+    <script>
+        var canvas = document.querySelector("#unity-canvas");
+
+        function resizeCanvas() {
+            canvas.style.width = window.innerWidth + "px";
+            canvas.style.height = window.innerHeight + "px";
+        }
+
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas(); // 초기 실행
+
+        createUnityInstance(canvas, {
+            arguments: [],
+            dataUrl: "Build/LionPrince.data",
+            frameworkUrl: "Build/LionPrince.framework.js",
+            codeUrl: "Build/LionPrince.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "DefaultCompany",
+            productName: "LionPrince",
+            productVersion: "1.0",
+            matchWebGLToCanvasSize: true,        // 중요!
+            devicePixelRatio: window.devicePixelRatio // 고해상도 모니터 대응
+        });
+    </script>
+</body>
+</html>
