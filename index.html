@@ -14,14 +14,6 @@
             background: #231F20;
         }
 
-        #unity-wrapper {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #231F20;
-        }
-
         #unity-canvas {
             position: absolute;
             left: 50%;
@@ -32,25 +24,21 @@
     </style>
 </head>
 <body>
-    <div id="unity-wrapper">
-        <canvas id="unity-canvas" width="3840" height="2160" tabindex="-1"></canvas>
-    </div>
-
-    <script src="Build/LionPrince.loader.js"></script>
+    <canvas id="unity-canvas" width="3840" height="2160" tabindex="-1"></canvas>
+    <script src="Build/LionPrinceWallpaperHTML.loader.js"></script>
     <script>
         var canvas = document.querySelector("#unity-canvas");
-        var wrapper = document.querySelector("#unity-wrapper");
 
         function resizeCanvas() {
             var windowRatio = window.innerWidth / window.innerHeight;
             var canvasRatio = canvas.width / canvas.height;
 
             if (windowRatio > canvasRatio) {
-                // 화면이 가로로 길 때 → 세로 기준으로 맞춤, 좌우 잘림
+                // 화면이 가로로 길 때 → 세로 기준 맞춤 (좌우 잘림)
                 canvas.style.height = window.innerHeight + "px";
                 canvas.style.width = (window.innerHeight * canvasRatio) + "px";
             } else {
-                // 화면이 세로로 길 때 → 가로 기준으로 맞춤, 상하 잘림
+                // 화면이 세로로 길 때 → 가로 기준 맞춤 (상하 잘림)
                 canvas.style.width = window.innerWidth + "px";
                 canvas.style.height = (window.innerWidth / canvasRatio) + "px";
             }
@@ -61,11 +49,11 @@
 
         createUnityInstance(canvas, {
             arguments: [],
-            dataUrl: "Build/LionPrince.data",
-            frameworkUrl: "Build/LionPrince.framework.js",
-            codeUrl: "Build/LionPrince.wasm",
+            dataUrl: "Build/LionPrinceWallpaperHTML.data",
+            frameworkUrl: "Build/LionPrinceWallpaperHTML.framework.js",
+            codeUrl: "Build/LionPrinceWallpaperHTML.wasm",
             streamingAssetsUrl: "StreamingAssets",
-            companyName: "DefaultCompany",
+            companyName: "GO9",
             productName: "LionPrince",
             productVersion: "1.0",
             matchWebGLToCanvasSize: true,
