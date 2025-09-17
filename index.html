@@ -13,7 +13,7 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-            background: #231F20;
+            background: #231F20; /* 여백 색상 */
         }
 
         #unity-container {
@@ -33,7 +33,7 @@
             transform: translate(-50%, -50%);
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 비율 유지 + 잘림 */
+            object-fit: contain; /* 🔥 레터박스 모드 */
             background: #231F20;
         }
     </style>
@@ -57,7 +57,7 @@
             productName: "LionPrince",
             productVersion: "1.0",
             matchWebGLToCanvasSize: true,
-            devicePixelRatio: window.devicePixelRatio
+            devicePixelRatio: 1  // 🔥 모바일 확대 방지
         });
     </script>
 </body>
